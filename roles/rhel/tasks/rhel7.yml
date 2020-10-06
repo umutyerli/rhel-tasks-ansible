@@ -1,0 +1,28 @@
+---
+- name: Describe RHEL 7
+  debug:
+    msg: "RHEL 7 Commands"
+
+- name: Become Splunk User and Stop Splunk
+  command: sudo -u splunk /opt/splunk/bin/splunk stop
+
+- name: Disable Splunk boot-start
+  command: sudo /opt/splunk/bin/splunk disable boot-start
+
+- name: Enable Splunk boot-start
+  command: sudo /opt/splunk/bin/splunk enable boot-start -user splunk -systemd-managed 1 -systemd-unit-file-name splunk
+
+- name: Start Splunk Service
+  become: yes
+  service:
+    state: started
+    name: splunk
+
+# IF all tasks above succesfully ran this task should run
+- name: Output Success Message
+  command: echo SUCCESSFUL
+
+- name: Output Ansible Success Message
+  debug:
+    msg: SUCCESSFUL
+
