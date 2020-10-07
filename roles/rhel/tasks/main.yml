@@ -6,7 +6,6 @@
 - name: Determine if CentOS/RHEL 7
   include_tasks: rhel7.yml
   when: (ansible_facts['distribution'] == "Red Hat Enterprise Linux Server" and ansible_facts['distribution_major_version'] == "7")
-  #when: (ansible_facts['distribution'] == "Red Hat Enterprise Linux Server" and ansible_facts['distribution_major_version'] == "7")
 
 
       
