@@ -25,3 +25,9 @@
 - name: Output Ansible Success Message
   debug:
     msg: SUCCESSFUL
+
+- name: Change jboss-eap-rhel.sh Content
+  lineinfile:
+    path: /home/vagrant/file
+    regexp: "  JBOSS_NAME='jboss-eap'"
+    line: "   JBOSS_NAME='jboss-test'"
